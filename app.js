@@ -1,79 +1,67 @@
-let valueGender;
+(function(){
 
-let userName = prompt('Введите имя');
-while(!Boolean(userName)){
-    userName = prompt('Введите имя');
-}
+let valueAge;
+let userAge;
+let userGender;
+let pensStatus;
 
-let userLastName = prompt('Введите фамилию');
-while(!Boolean(userLastName)){
-    userLastName = prompt('Введите фамилию');
-}
+    let userName = prompt('Введите имя',  '');
+        while(!Boolean(userName)){
+            userName = prompt('Введите имя', '');
+        }
 
-
-
-
-// let userGender = prompt('Введите Ваш пол, М или Ж');
-//     while(!Boolean(userGender) && (userGender === 'М' || 'Ж') ){
-//         switch(userGender){
-//             case 'М' || 'м':
-//                 valueGender == 'М';
-//                 break
-//             case 'Ж'||'ж':
-//                 valueGender == 'Ж';
-//                 break;
-//         }
-//     }
-
-    // if ((Boolean(userGender)) && (userGender == 'М' || 'м')) {
-    //     valueGender = 'М';
-    // } else if 
-    //     ((Boolean(userGender)) && (userGender == 'Ж' || 'ж')){
-    //     valueGender = 'Ж';
-    //     }
-    // else {
-    //     userGender = prompt ('Введите Ваш пол, М или Ж');
-    // } 
-
-// let userAge = prompt('Введите возраст');
+    let userLastName = prompt('Введите фамилию', '');
+        while(!Boolean(userLastName)){
+            userLastName = prompt('Введите фамилию', '');
+        }
 
 
-// console.log(userName, userLastName, userGender);
+    (function age(){
+        do {
+            userAge = prompt('Сколько вам лет', '18'),
+            valueAge = userAge && Number(userAge); 
+        } while (!Number.isFinite(valueAge));
+            if (userAge <= 0) {
+                age();
+            } else {
+                return userAge;
+            }
+
+    }());
+// console.log(userAge);
+
+    (function gender(){
+        do {
+            userGender = prompt('Введите ваш пол, М/Ж','');
+        } while (!Boolean(userGender));
+            switch (userGender) {
+                case 'М': 
+                    return userGender = 'М';
+                    
+                case 'м': 
+                    return userGender = 'М';
+                    
+                case 'Ж': 
+                    return userGender = 'Ж';
+                    
+                case 'ж':
+                    return userGender = 'Ж';
+                    
+                default: 
+                    gender();
+            }
+    }());
+//  console.log(userGender);
 
 
-// let userInput = prompt('Введите ваш возраст'),
-//     value = userInput && Number(userInput);
+    if ((userGender == 'М') && (userAge >= 63)) {
+        pensStatus = 'Да';
+    } else if ((userGender == 'Ж') && (userAge >= 58)) {
+        pensStatus = 'Да'; 
+    } else pensStatus = 'Нет';
 
-//     if (Number.isFinite(value))  {
-//         // alert(Math.pow(value, 2));
-//         alert('Your age ' + userInput)
-//     } else  {
-//         alert('Error');
-        
-//     }
+alert ('Полное имя: ' + userName + ' ' + userLastName + 
+        '\nПол: ' + userGender + 
+        '\nНа пенсии: ' + pensStatus);
 
-
-
-
-// let value;
-
-// while (!Number.isFinite(value)) {
-//     let userInput = prompt('Введите число'),
-//     value = userInput && Number(userInput);
-// }
-
-
-// ( function () {
-//     "use strict";
-
-//         let user = {
-//         name: 'Peter',
-//         hello () {
-//             // alert('Hello, my name is '+ this.name);
-//             let getName = () => this.name;
-//             alert('Hello, my name is ' + getName());
-//         }
-        
-//     };
-//     user.hello();
-// })();
+}());
